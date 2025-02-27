@@ -312,10 +312,21 @@ namespace Payroll_1.Formularios
             }
             Puesto puestoSeleccionado = (Puesto)cbxPuesto.SelectedItem;
 
-            Contrato contrato = new Contrato(
-                empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSeleccionado.IdPuesto, definirTipoContrato(), "S"
-                );
-            contrato.AgregarContrato();
+            if(!checboxFechaBaja.Checked)
+            {
+                Contrato contrato = new Contrato(
+                 empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSeleccionado.IdPuesto, definirTipoContrato(), "S"
+                 );
+                contrato.AgregarContrato();
+            } else if (checboxFechaBaja.Checked)
+            {
+                Contrato contrato = new Contrato(
+                 empleado.IdEmpleado, dtpFechaAlta.Value, null, puestoSeleccionado.IdPuesto, definirTipoContrato(), "S"
+                 );
+                contrato.AgregarContrato();
+            }
+
+
             actualizarEstadoEmpleado();
             cargarContratos();
         }

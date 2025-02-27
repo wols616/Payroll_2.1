@@ -98,40 +98,47 @@ namespace Payroll_1.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
+            if (dgvCategoria.SelectedRows.Count != 0)
             {
-                int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
-                string nombreCategoria = TxtNombreCat.Text;
-                decimal sueldobase;
-
-                if (!decimal.TryParse(TxtSueldoBase.Text, out sueldobase) || sueldobase < 0)
+                try
                 {
-                    MessageBox.Show("Ingrese un sueldo base válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
+                    string nombreCategoria = TxtNombreCat.Text;
+                    decimal sueldobase;
+
+                    if (!decimal.TryParse(TxtSueldoBase.Text, out sueldobase) || sueldobase < 0)
+                    {
+                        MessageBox.Show("Ingrese un sueldo base válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(nombreCategoria))
+                    {
+                        MessageBox.Show("Debe llenar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    Categoria categoria = new Categoria(idCategoria, nombreCategoria, sueldobase);
+
+                    // Confirmación antes de actualizar
+                    DialogResult resultado = MessageBox.Show("¿Está seguro de que desea actualizar esta categoría?",
+                                                             "Confirmación de actualización",
+                                                             MessageBoxButtons.YesNo,
+                                                             MessageBoxIcon.Information);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        categoria.ActualizarCategoria();
+                        cargarTablaDCategoria();
+                        MessageBox.Show("Categoría actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-
-                if (string.IsNullOrWhiteSpace(nombreCategoria))
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Debe llenar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                Categoria categoria = new Categoria(idCategoria, nombreCategoria, sueldobase);
-
-                // Confirmación antes de actualizar
-                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea actualizar esta categoría?",
-                                                         "Confirmación de actualización",
-                                                         MessageBoxButtons.YesNo,
-                                                         MessageBoxIcon.Information);
-                if (resultado == DialogResult.Yes)
-                {
-                    categoria.ActualizarCategoria();
-                    cargarTablaDCategoria();
-                    MessageBox.Show("Categoría actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione una categoría para actualizar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
