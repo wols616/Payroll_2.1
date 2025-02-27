@@ -86,7 +86,11 @@ namespace Payroll_1.Formularios.Empleado
             string contrasenaNueva = txt_contrasena_nueva.Text.Trim();
             string contrasenaNuevaConfirmar = txt_confirmar_contrasena.Text.Trim();
             string correo = txt_correo.Text.Trim();
-            string cuentaBancaria = txt_cuenta.Text.Trim();
+            //string cuentaBancaria = txt_cuenta.Text.Trim();
+
+            string cuentaBancaria = new string(txt_cuenta.Text.Trim().Where(char.IsDigit).ToArray());
+
+
             string contrasena = txt_contrasena.Text.Trim();
 
             // Expresiones regulares para validar correo y cuenta bancaria
@@ -129,7 +133,7 @@ namespace Payroll_1.Formularios.Empleado
             if (string.IsNullOrEmpty(contrasenaNuevaConfirmar))
             {
                 MostrarMensaje("Debe confirmar la nueva contraseña.");
-                lbl_confirmar_contra.ForeColor= Color.DarkRed;
+                lbl_confirmar_contra.ForeColor = Color.DarkRed;
                 return;
             }
             else if (contrasenaNueva != contrasenaNuevaConfirmar)
@@ -178,14 +182,14 @@ namespace Payroll_1.Formularios.Empleado
                 if (Empleado.EsCorreoUnico(correofinal))
                 {
 
-                    if (txt_cuenta.Text != cuenta_original)
+                    if (cuentaBancaria != cuenta_original)
                     {
-                        string cuentafinal = txt_cuenta.Text;
+                        string cuentafinal = cuentaBancaria;
                         if (Empleado.EsCuentaUnica(cuentafinal))
                         {
                             //hacer update
                             Empleado = new Empleados();
-                            Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, txt_cuenta.Text);
+                            Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                             MostrarMensajepositivo("Actualizacion realizada");
                             cargarDatos();
                             lbl_contra_nueva.ForeColor = Color.Black;
@@ -204,7 +208,7 @@ namespace Payroll_1.Formularios.Empleado
                     }
                     //hacer update
                     Empleado = new Empleados();
-                    Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, txt_cuenta.Text);
+                    Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                     MostrarMensajepositivo("Actualizacion realizada");
                     cargarDatos();
                     lbl_contra_nueva.ForeColor = Color.Black;
@@ -214,24 +218,24 @@ namespace Payroll_1.Formularios.Empleado
                     lbl_contrasena_actual.ForeColor = Color.Black;
                     return;
                 }
-                else 
+                else
                 {
                     MostrarMensaje("El correo ingresado ya esta siendo usado");
                     lbl_correo.ForeColor = Color.DarkRed;
-                    
+
                     return;
                 }
-                
+
             }
-            else if (txt_cuenta.Text != cuenta_original)
+            else if (cuentaBancaria != cuenta_original)
             {
-                string cuentafinal = txt_cuenta.Text;
+                string cuentafinal = cuentaBancaria;
                 Empleado = new Empleados();
                 if (Empleado.EsCuentaUnica(cuentafinal))
                 {
                     //hacer update
                     Empleado = new Empleados();
-                    Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, txt_cuenta.Text);
+                    Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                     MostrarMensajepositivo("Actualizacion realizada");
                     cargarDatos();
                     lbl_contra_nueva.ForeColor = Color.Black;
@@ -252,7 +256,7 @@ namespace Payroll_1.Formularios.Empleado
             {
                 //hacer update
                 Empleado = new Empleados();
-                Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, txt_cuenta.Text);
+                Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                 MostrarMensajepositivo("Actualizacion realizada");
                 cargarDatos();
                 lbl_contra_nueva.ForeColor = Color.Black;
@@ -279,7 +283,7 @@ namespace Payroll_1.Formularios.Empleado
             string telefono = txt_telefono.Text.Trim();
             string direccion = txt_direccion.Text.Trim();
 
-            string duiPattern = @"^\d{8}-\d$"; 
+            string duiPattern = @"^\d{8}-\d$";
             string telefonoPattern = @"^\d{4}-\d{4}$";
 
             if (string.IsNullOrEmpty(dui) && string.IsNullOrEmpty(nombre) && string.IsNullOrEmpty(apellido)
@@ -342,7 +346,8 @@ namespace Payroll_1.Formularios.Empleado
                 return;
             }
 
-            else if (dui_original != txt_dui.Text) {
+            else if (dui_original != txt_dui.Text)
+            {
                 Empleado = new Empleados();
                 string duiFinal = txt_dui.Text;
                 if (Empleado.EsDUIUnico(duiFinal))
@@ -445,7 +450,7 @@ namespace Payroll_1.Formularios.Empleado
         private void MostrarMensaje(string mensaje)
         {
             lbl_message.Text = mensaje;
-            lbl_message.BackColor = Color.LightCoral; 
+            lbl_message.BackColor = Color.LightCoral;
             lbl_message.ForeColor = Color.DarkRed;
             lbl_message.Visible = true;
         }
@@ -461,7 +466,7 @@ namespace Payroll_1.Formularios.Empleado
 
         private bool IsValidPassword(string password)
         {
-            
+
             bool hasLetter = false;
             bool hasDigit = false;
             bool hasSpecialChar = false;
@@ -472,7 +477,7 @@ namespace Payroll_1.Formularios.Empleado
                 else if (char.IsDigit(c)) hasDigit = true;
                 else if (!char.IsLetterOrDigit(c)) hasSpecialChar = true;
 
-                
+
                 if (hasLetter && hasDigit && hasSpecialChar)
                 {
                     return true;
@@ -503,10 +508,48 @@ namespace Payroll_1.Formularios.Empleado
             txt_confirmar_contrasena.Visible = false;
             txt_contrasena_nueva.Visible = false;
             btn_habilitar_cambio.Visible = true;
-            btn_no_cambiar.Visible=false;
+            btn_no_cambiar.Visible = false;
             txt_contrasena_nueva.Text = contraseña;
             txt_confirmar_contrasena.Text = contraseña;
-           
+
+        }
+
+        private void txt_cuenta_TextChanged(object sender, EventArgs e)
+        {
+            int cursorPos = txt_cuenta.SelectionStart;
+            int lengthBefore = txt_cuenta.Text.Length;
+
+            if (txt_cuenta.Text.Any(c => !char.IsDigit(c) && c != '-'))
+            {
+                MessageBox.Show("Solo se permiten números.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_cuenta.Text = new string(txt_cuenta.Text.Where(char.IsDigit).ToArray());
+                txt_cuenta.SelectionStart = txt_cuenta.Text.Length;
+                return;
+            }
+
+            string numeroSinGuiones = new string(txt_cuenta.Text.Where(char.IsDigit).ToArray());
+
+            if (numeroSinGuiones.Length > 12)
+            {
+                numeroSinGuiones = numeroSinGuiones.Substring(0, 12);
+            }
+
+            // Aplicar formato con guiones
+            string formato = "";
+            if (numeroSinGuiones.Length > 0)
+                formato += numeroSinGuiones.Substring(0, Math.Min(2, numeroSinGuiones.Length));
+            if (numeroSinGuiones.Length > 2)
+                formato += "-" + numeroSinGuiones.Substring(2, Math.Min(2, numeroSinGuiones.Length - 2));
+            if (numeroSinGuiones.Length > 4)
+                formato += "-" + numeroSinGuiones.Substring(4, Math.Min(7, numeroSinGuiones.Length - 4));
+            if (numeroSinGuiones.Length > 11)
+                formato += "-" + numeroSinGuiones.Substring(11, 1);
+
+            if (txt_cuenta.Text != formato)
+            {
+                txt_cuenta.Text = formato;
+                txt_cuenta.SelectionStart = formato.Length;
+            }
         }
     }
 }
