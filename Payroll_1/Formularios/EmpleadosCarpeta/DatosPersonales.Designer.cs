@@ -305,6 +305,7 @@
             txt_cuenta.Name = "txt_cuenta";
             txt_cuenta.Size = new Size(190, 27);
             txt_cuenta.TabIndex = 11;
+            txt_cuenta.TextChanged += txt_cuenta_TextChanged;
             // 
             // lbl_cuenta
             // 
