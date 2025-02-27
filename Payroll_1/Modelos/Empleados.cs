@@ -470,6 +470,7 @@ namespace Payroll_1.Modelos
                 }
             }
         }
+
         //sobrecarga de cuenta
         public bool EsCuentaUnica(string cuenta, int idEmpleado)
         {

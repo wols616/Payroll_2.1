@@ -124,25 +124,29 @@ namespace Payroll_1.Formularios
                 }
 
                 // Número de cuenta
+                // Extraer solo los números sin guiones
+                string numeroSinGuiones = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray());
+
                 if (string.IsNullOrWhiteSpace(txt_Ncuenta.Text))
                 {
                     MessageBox.Show("El campo Cuenta Corriente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if (txt_Ncuenta.Text.Length != 15)
+                else if (numeroSinGuiones.Length != 12) // Validar que sean exactamente 12 dígitos
                 {
                     MessageBox.Show("La Cuenta Corriente debe tener exactamente 12 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if (!empleado.EsCuentaUnica(txt_Ncuenta.Text))
+                else if (!empleado.EsCuentaUnica(numeroSinGuiones))
                 {
                     MessageBox.Show("Este número de cuenta ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 else
                 {
+                    // Guardar solo los números sin guiones
                     contadorValidaciones++;
-                    empleado.CuentaCorriente = txt_Ncuenta.Text;
+                    empleado.CuentaCorriente = numeroSinGuiones;
                 }
 
                 // Número de teléfono
@@ -195,12 +199,31 @@ namespace Payroll_1.Formularios
                     empleado.Correo = correo;
                 }
 
-               
 
+
+
+                //// Contraseña
+                //string contrasena = txtContrasena.Text.Trim();
+                //string patronContrasena = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$";
+                //if (Regex.IsMatch(contrasena, patronContrasena))
+                //{
+                //    contadorValidaciones++;
+                //    empleado.Contrasena = contrasena;
+                //}
+                //else if (string.IsNullOrWhiteSpace(txtContrasena.Text))
+                //{
+                //    MessageBox.Show("El campo Contraseña no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra mayúscula\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
                 // Contraseña
                 string contrasena = txtContrasena.Text.Trim();
-                string patronContrasena = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$";
+                string patronContrasena = @"^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$"; // Se eliminó la validación de mayúscula
+
                 if (Regex.IsMatch(contrasena, patronContrasena))
                 {
                     contadorValidaciones++;
@@ -212,9 +235,10 @@ namespace Payroll_1.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra mayúscula\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
 
                 // Verificación final
                 if (contadorValidaciones == 8)
@@ -352,27 +376,57 @@ namespace Payroll_1.Formularios
                     empleado.Direccion = txt_Direccion.Text;
                 }
 
+                //// Número de cuenta
+                //if (string.IsNullOrWhiteSpace(txt_Ncuenta.Text))
+                //{
+                //    MessageBox.Show("El campo Cuenta Corriente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+                //else if (txt_Ncuenta.Text.Length != 15)
+                //{
+                //    MessageBox.Show("La Cuenta Corriente debe tener exactamente 12 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+                //else if (!empleado.EsCuentaUnica(txt_Ncuenta.Text, idEmpleado))
+                //{
+                //    MessageBox.Show("Este número de cuenta ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+                //else
+                //{
+                //    contadorValidaciones++;
+                //    empleado.CuentaCorriente = txt_Ncuenta.Text;
+                //}
+
                 // Número de cuenta
+
+                // Extraer solo los números sin guiones
+                string numeroSinGuiones = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray());
+
                 if (string.IsNullOrWhiteSpace(txt_Ncuenta.Text))
                 {
                     MessageBox.Show("El campo Cuenta Corriente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if (txt_Ncuenta.Text.Length != 15)
+                else if (numeroSinGuiones.Length != 12) // Validar que sean exactamente 12 dígitos
                 {
                     MessageBox.Show("La Cuenta Corriente debe tener exactamente 12 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if (!empleado.EsCuentaUnica(txt_Ncuenta.Text, idEmpleado))
+                else if (!empleado.EsCuentaUnica(numeroSinGuiones, idEmpleado))
                 {
                     MessageBox.Show("Este número de cuenta ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 else
                 {
+                    // Guardar solo los números sin guiones
                     contadorValidaciones++;
-                    empleado.CuentaCorriente = txt_Ncuenta.Text;
+                    empleado.CuentaCorriente = numeroSinGuiones;
                 }
+
+                
+
 
                 // Número de teléfono
                 string telefono = txt_Telefono.Text;
@@ -424,9 +478,28 @@ namespace Payroll_1.Formularios
                 }
 
 
+                //// Contraseña
+                //string contrasena = txtContrasena.Text.Trim();
+                //string patronContrasena = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$";
+                //if (Regex.IsMatch(contrasena, patronContrasena))
+                //{
+                //    contadorValidaciones++;
+                //    empleado.Contrasena = contrasena;
+                //}
+                //else if (string.IsNullOrWhiteSpace(txtContrasena.Text))
+                //{
+                //    MessageBox.Show("El campo Contraseña no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra mayúscula\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+
                 // Contraseña
                 string contrasena = txtContrasena.Text.Trim();
-                string patronContrasena = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$";
+                string patronContrasena = @"^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,16}$"; // Se eliminó la validación de mayúscula
+
                 if (Regex.IsMatch(contrasena, patronContrasena))
                 {
                     contadorValidaciones++;
@@ -438,7 +511,7 @@ namespace Payroll_1.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra mayúscula\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La contraseña debe tener al menos:\n- Una letra minúscula\n- Un número\n- Un carácter especial\n- Entre 8 y 16 caracteres.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -576,14 +649,14 @@ namespace Payroll_1.Formularios
 
         private void txt_Ncuenta_TextChanged(object sender, EventArgs e)
         {
-            int cursorPos = txt_Ncuenta.SelectionStart; 
+            int cursorPos = txt_Ncuenta.SelectionStart;
             int lengthBefore = txt_Ncuenta.Text.Length;
 
             if (txt_Ncuenta.Text.Any(c => !char.IsDigit(c) && c != '-'))
             {
                 MessageBox.Show("Solo se permiten números.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_Ncuenta.Text = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray()); 
-                txt_Ncuenta.SelectionStart = txt_Ncuenta.Text.Length; 
+                txt_Ncuenta.Text = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray());
+                txt_Ncuenta.SelectionStart = txt_Ncuenta.Text.Length;
                 return;
             }
 
@@ -608,8 +681,9 @@ namespace Payroll_1.Formularios
             if (txt_Ncuenta.Text != formato)
             {
                 txt_Ncuenta.Text = formato;
-                txt_Ncuenta.SelectionStart = formato.Length; 
+                txt_Ncuenta.SelectionStart = formato.Length;
             }
+
         }
 
 
