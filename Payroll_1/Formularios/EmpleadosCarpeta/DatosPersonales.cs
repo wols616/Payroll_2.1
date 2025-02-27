@@ -53,7 +53,7 @@ namespace Payroll_1.Formularios.Empleado
                 txt_contrasena_nueva.Text = Empleado.Contrasena;
                 txt_confirmar_contrasena.Text = Empleado.Contrasena;
                 txt_correo.Text = Empleado.Correo;
-                txt_cuenta.Text = Empleado.CuentaCorriente;
+                txt_cuenta.Text = FormatearCuenta(Empleado.CuentaCorriente);
                 contraseña = Empleado.Contrasena;
                 correo_original = Empleado.Correo;
                 cuenta_original = Empleado.CuentaCorriente;
@@ -192,6 +192,14 @@ namespace Payroll_1.Formularios.Empleado
                             Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                             MostrarMensajepositivo("Actualizacion realizada");
                             cargarDatos();
+                            lbl_contra_nueva.Visible = false;
+                            lbl_confirmar_contra.Visible = false;
+                            txt_confirmar_contrasena.Visible = false;
+                            txt_contrasena_nueva.Visible = false;
+                            btn_habilitar_cambio.Visible = true;
+                            btn_no_cambiar.Visible = false;
+                            txt_contrasena_nueva.Text = contraseña;
+                            txt_confirmar_contrasena.Text = contraseña;
                             lbl_contra_nueva.ForeColor = Color.Black;
                             lbl_confirmar_contra.ForeColor = Color.Black;
                             lbl_correo.ForeColor = Color.Black;
@@ -211,6 +219,14 @@ namespace Payroll_1.Formularios.Empleado
                     Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                     MostrarMensajepositivo("Actualizacion realizada");
                     cargarDatos();
+                    lbl_contra_nueva.Visible = false;
+                    lbl_confirmar_contra.Visible = false;
+                    txt_confirmar_contrasena.Visible = false;
+                    txt_contrasena_nueva.Visible = false;
+                    btn_habilitar_cambio.Visible = true;
+                    btn_no_cambiar.Visible = false;
+                    txt_contrasena_nueva.Text = contraseña;
+                    txt_confirmar_contrasena.Text = contraseña;
                     lbl_contra_nueva.ForeColor = Color.Black;
                     lbl_confirmar_contra.ForeColor = Color.Black;
                     lbl_correo.ForeColor = Color.Black;
@@ -238,6 +254,14 @@ namespace Payroll_1.Formularios.Empleado
                     Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                     MostrarMensajepositivo("Actualizacion realizada");
                     cargarDatos();
+                    lbl_contra_nueva.Visible = false;
+                    lbl_confirmar_contra.Visible = false;
+                    txt_confirmar_contrasena.Visible = false;
+                    txt_contrasena_nueva.Visible = false;
+                    btn_habilitar_cambio.Visible = true;
+                    btn_no_cambiar.Visible = false;
+                    txt_contrasena_nueva.Text = contraseña;
+                    txt_confirmar_contrasena.Text = contraseña;
                     lbl_contra_nueva.ForeColor = Color.Black;
                     lbl_confirmar_contra.ForeColor = Color.Black;
                     lbl_correo.ForeColor = Color.Black;
@@ -255,10 +279,19 @@ namespace Payroll_1.Formularios.Empleado
             else if (txt_contrasena_nueva.Text != contraseña)
             {
                 //hacer update
+                
                 Empleado = new Empleados();
                 Empleado.ActualizarDatosSensibles(id_Empleado, txt_confirmar_contrasena.Text, txt_correo.Text, cuentaBancaria);
                 MostrarMensajepositivo("Actualizacion realizada");
                 cargarDatos();
+                lbl_contra_nueva.Visible = false;
+                lbl_confirmar_contra.Visible = false;
+                txt_confirmar_contrasena.Visible = false;
+                txt_contrasena_nueva.Visible = false;
+                btn_habilitar_cambio.Visible = true;
+                btn_no_cambiar.Visible = false;
+                txt_contrasena_nueva.Text = contraseña;
+                txt_confirmar_contrasena.Text = contraseña;
                 lbl_contra_nueva.ForeColor = Color.Black;
                 lbl_confirmar_contra.ForeColor = Color.Black;
                 lbl_correo.ForeColor = Color.Black;
@@ -367,6 +400,14 @@ namespace Payroll_1.Formularios.Empleado
                             lbl_telefono.ForeColor = Color.Black;
                             lbl_direccion.ForeColor = Color.Black;
                             cargarDatos();
+                            lbl_contra_nueva.Visible = false;
+                            lbl_confirmar_contra.Visible = false;
+                            txt_confirmar_contrasena.Visible = false;
+                            txt_contrasena_nueva.Visible = false;
+                            btn_habilitar_cambio.Visible = true;
+                            btn_no_cambiar.Visible = false;
+                            txt_contrasena_nueva.Text = contraseña;
+                            txt_confirmar_contrasena.Text = contraseña;
                             return;
                         }
                         else
@@ -386,6 +427,14 @@ namespace Payroll_1.Formularios.Empleado
                     lbl_telefono.ForeColor = Color.Black;
                     lbl_direccion.ForeColor = Color.Black;
                     cargarDatos();
+                    lbl_contra_nueva.Visible = false;
+                    lbl_confirmar_contra.Visible = false;
+                    txt_confirmar_contrasena.Visible = false;
+                    txt_contrasena_nueva.Visible = false;
+                    btn_habilitar_cambio.Visible = true;
+                    btn_no_cambiar.Visible = false;
+                    txt_contrasena_nueva.Text = contraseña;
+                    txt_confirmar_contrasena.Text = contraseña;
                     return;
                 }
                 else
@@ -409,6 +458,14 @@ namespace Payroll_1.Formularios.Empleado
                 lbl_telefono.ForeColor = Color.Black;
                 lbl_direccion.ForeColor = Color.Black;
                 cargarDatos();
+                lbl_contra_nueva.Visible = false;
+                lbl_confirmar_contra.Visible = false;
+                txt_confirmar_contrasena.Visible = false;
+                txt_contrasena_nueva.Visible = false;
+                btn_habilitar_cambio.Visible = true;
+                btn_no_cambiar.Visible = false;
+                txt_contrasena_nueva.Text = contraseña;
+                txt_confirmar_contrasena.Text = contraseña;
                 return;
             }
 
@@ -427,6 +484,14 @@ namespace Payroll_1.Formularios.Empleado
                     lbl_telefono.ForeColor = Color.Black;
                     lbl_direccion.ForeColor = Color.Black;
                     cargarDatos();
+                    lbl_contra_nueva.Visible = false;
+                    lbl_confirmar_contra.Visible = false;
+                    txt_confirmar_contrasena.Visible = false;
+                    txt_contrasena_nueva.Visible = false;
+                    btn_habilitar_cambio.Visible = true;
+                    btn_no_cambiar.Visible = false;
+                    txt_contrasena_nueva.Text = contraseña;
+                    txt_confirmar_contrasena.Text = contraseña;
                     return;
                 }
                 else
@@ -514,42 +579,20 @@ namespace Payroll_1.Formularios.Empleado
 
         }
 
-        private void txt_cuenta_TextChanged(object sender, EventArgs e)
+        public string FormatearCuenta(string cuenta)
         {
-            int cursorPos = txt_cuenta.SelectionStart;
-            int lengthBefore = txt_cuenta.Text.Length;
-
-            if (txt_cuenta.Text.Any(c => !char.IsDigit(c) && c != '-'))
+            // Verificar que la cuenta tenga exactamente 12 dígitos
+            if (cuenta.Length != 12 || !cuenta.All(char.IsDigit))
             {
-                MessageBox.Show("Solo se permiten números.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_cuenta.Text = new string(txt_cuenta.Text.Where(char.IsDigit).ToArray());
-                txt_cuenta.SelectionStart = txt_cuenta.Text.Length;
-                return;
+                MostrarMensaje("Al parecer su numero de cuenta esta mal en la base de datos, esta debe contener exactamente 12 dígitos numéricos, por favor, corrijala..");
+            }
+            else
+            {
+                // Aplicar el formato 00-00-0000000-0
+                return $"{cuenta.Substring(0, 2)}-{cuenta.Substring(2, 2)}-{cuenta.Substring(4, 7)}-{cuenta.Substring(11, 1)}";
             }
 
-            string numeroSinGuiones = new string(txt_cuenta.Text.Where(char.IsDigit).ToArray());
-
-            if (numeroSinGuiones.Length > 12)
-            {
-                numeroSinGuiones = numeroSinGuiones.Substring(0, 12);
-            }
-
-            // Aplicar formato con guiones
-            string formato = "";
-            if (numeroSinGuiones.Length > 0)
-                formato += numeroSinGuiones.Substring(0, Math.Min(2, numeroSinGuiones.Length));
-            if (numeroSinGuiones.Length > 2)
-                formato += "-" + numeroSinGuiones.Substring(2, Math.Min(2, numeroSinGuiones.Length - 2));
-            if (numeroSinGuiones.Length > 4)
-                formato += "-" + numeroSinGuiones.Substring(4, Math.Min(7, numeroSinGuiones.Length - 4));
-            if (numeroSinGuiones.Length > 11)
-                formato += "-" + numeroSinGuiones.Substring(11, 1);
-
-            if (txt_cuenta.Text != formato)
-            {
-                txt_cuenta.Text = formato;
-                txt_cuenta.SelectionStart = formato.Length;
-            }
+            return "00-00-0000000-0";
         }
     }
 }

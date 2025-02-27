@@ -31,8 +31,9 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            txt_dui = new MaskedTextBox();
+            txt_telefono = new MaskedTextBox();
             txt_direccion = new TextBox();
-            txt_telefono = new TextBox();
             txt_apellidos = new TextBox();
             txt_nombres = new TextBox();
             btn_actualizar_personales = new Button();
@@ -40,7 +41,6 @@
             lbl_telefono = new Label();
             lbl_apellidos = new Label();
             lbl_nombres = new Label();
-            txt_dui = new TextBox();
             lbl_dui = new Label();
             groupBox2 = new GroupBox();
             btn_no_cambiar = new Button();
@@ -49,7 +49,6 @@
             lbl_confirmar_contra = new Label();
             txt_contrasena_nueva = new TextBox();
             txt_correo = new TextBox();
-            txt_cuenta = new TextBox();
             lbl_cuenta = new Label();
             lbl_correo = new Label();
             lbl_contra_nueva = new Label();
@@ -59,6 +58,7 @@
             lbl_message = new Label();
             lbl_id = new Label();
             pictureBox2 = new PictureBox();
+            txt_cuenta = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -91,8 +91,9 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.White;
-            groupBox1.Controls.Add(txt_direccion);
+            groupBox1.Controls.Add(txt_dui);
             groupBox1.Controls.Add(txt_telefono);
+            groupBox1.Controls.Add(txt_direccion);
             groupBox1.Controls.Add(txt_apellidos);
             groupBox1.Controls.Add(txt_nombres);
             groupBox1.Controls.Add(btn_actualizar_personales);
@@ -100,7 +101,6 @@
             groupBox1.Controls.Add(lbl_telefono);
             groupBox1.Controls.Add(lbl_apellidos);
             groupBox1.Controls.Add(lbl_nombres);
-            groupBox1.Controls.Add(txt_dui);
             groupBox1.Controls.Add(lbl_dui);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(27, 108);
@@ -111,6 +111,22 @@
             groupBox1.Text = "Información general";
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // txt_dui
+            // 
+            txt_dui.Location = new Point(80, 49);
+            txt_dui.Mask = "00000000-0";
+            txt_dui.Name = "txt_dui";
+            txt_dui.Size = new Size(248, 27);
+            txt_dui.TabIndex = 12;
+            // 
+            // txt_telefono
+            // 
+            txt_telefono.Location = new Point(118, 226);
+            txt_telefono.Mask = "0000-0000";
+            txt_telefono.Name = "txt_telefono";
+            txt_telefono.Size = new Size(248, 27);
+            txt_telefono.TabIndex = 11;
+            // 
             // txt_direccion
             // 
             txt_direccion.Font = new Font("Segoe UI", 9F);
@@ -119,14 +135,6 @@
             txt_direccion.Name = "txt_direccion";
             txt_direccion.Size = new Size(248, 58);
             txt_direccion.TabIndex = 10;
-            // 
-            // txt_telefono
-            // 
-            txt_telefono.Font = new Font("Segoe UI", 9F);
-            txt_telefono.Location = new Point(118, 225);
-            txt_telefono.Name = "txt_telefono";
-            txt_telefono.Size = new Size(248, 27);
-            txt_telefono.TabIndex = 9;
             // 
             // txt_apellidos
             // 
@@ -195,14 +203,6 @@
             lbl_nombres.TabIndex = 2;
             lbl_nombres.Text = "Nombres:";
             // 
-            // txt_dui
-            // 
-            txt_dui.Font = new Font("Segoe UI", 9F);
-            txt_dui.Location = new Point(80, 49);
-            txt_dui.Name = "txt_dui";
-            txt_dui.Size = new Size(163, 27);
-            txt_dui.TabIndex = 1;
-            // 
             // lbl_dui
             // 
             lbl_dui.AutoSize = true;
@@ -214,13 +214,13 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txt_cuenta);
             groupBox2.Controls.Add(btn_no_cambiar);
             groupBox2.Controls.Add(btn_habilitar_cambio);
             groupBox2.Controls.Add(txt_confirmar_contrasena);
             groupBox2.Controls.Add(lbl_confirmar_contra);
             groupBox2.Controls.Add(txt_contrasena_nueva);
             groupBox2.Controls.Add(txt_correo);
-            groupBox2.Controls.Add(txt_cuenta);
             groupBox2.Controls.Add(lbl_cuenta);
             groupBox2.Controls.Add(lbl_correo);
             groupBox2.Controls.Add(lbl_contra_nueva);
@@ -297,15 +297,6 @@
             txt_correo.Name = "txt_correo";
             txt_correo.Size = new Size(255, 27);
             txt_correo.TabIndex = 15;
-            // 
-            // txt_cuenta
-            // 
-            txt_cuenta.Font = new Font("Segoe UI", 9F);
-            txt_cuenta.Location = new Point(166, 237);
-            txt_cuenta.Name = "txt_cuenta";
-            txt_cuenta.Size = new Size(190, 27);
-            txt_cuenta.TabIndex = 11;
-            txt_cuenta.TextChanged += txt_cuenta_TextChanged;
             // 
             // lbl_cuenta
             // 
@@ -396,6 +387,14 @@
             pictureBox2.TabIndex = 36;
             pictureBox2.TabStop = false;
             // 
+            // txt_cuenta
+            // 
+            txt_cuenta.Location = new Point(166, 237);
+            txt_cuenta.Mask = "00-00-0000000-0";
+            txt_cuenta.Name = "txt_cuenta";
+            txt_cuenta.Size = new Size(190, 27);
+            txt_cuenta.TabIndex = 13;
+            // 
             // DatosPersonales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -429,18 +428,15 @@
         private GroupBox groupBox1;
         private Label lbl_apellidos;
         private Label lbl_nombres;
-        private TextBox txt_dui;
         private Label lbl_dui;
         private GroupBox groupBox2;
         private Button btn_actualizar_personales;
         private Label lbl_direccion;
         private Label lbl_telefono;
-        private TextBox txt_telefono;
         private TextBox txt_apellidos;
         private TextBox txt_nombres;
         private Button btn_actualizar_sensibles;
         private Label lbl_contrasena_actual;
-        private TextBox txt_cuenta;
         private Label lbl_cuenta;
         private Label lbl_correo;
         private Label lbl_contra_nueva;
@@ -455,5 +451,8 @@
         private Button btn_no_cambiar;
         private Label lbl_id;
         private PictureBox pictureBox2;
+        private MaskedTextBox txt_dui;
+        private MaskedTextBox txt_telefono;
+        private MaskedTextBox txt_cuenta;
     }
 }

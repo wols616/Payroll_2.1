@@ -346,11 +346,11 @@ namespace Payroll_1.Modelos
 
                         if (filasAfectadas > 0)
                         {
-                            MessageBox.Show("Datos personales actualizados correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo actualizar los datos personales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            
                         }
                     }
                 }
@@ -382,11 +382,11 @@ namespace Payroll_1.Modelos
 
                         if (filasAfectadas > 0)
                         {
-                            MessageBox.Show("Datos de cuenta actualizados correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo actualizar los datos de cuenta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            
                         }
                     }
                 }
