@@ -31,6 +31,7 @@
             button1 = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            txt_bienvenido = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -42,7 +43,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(219, 225);
+            button1.Location = new Point(219, 267);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(211, 42);
@@ -73,12 +74,24 @@
             pictureBox2.TabIndex = 9;
             pictureBox2.TabStop = false;
             // 
+            // txt_bienvenido
+            // 
+            txt_bienvenido.Font = new Font("Bahnschrift", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txt_bienvenido.Location = new Point(185, 215);
+            txt_bienvenido.Name = "txt_bienvenido";
+            txt_bienvenido.Size = new Size(282, 42);
+            txt_bienvenido.TabIndex = 10;
+            txt_bienvenido.Text = "Bienvenido empleado";
+            txt_bienvenido.TextAlign = ContentAlignment.MiddleCenter;
+            txt_bienvenido.Click += txt_bienvenido_Click;
+            // 
             // HomeEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(662, 335);
+            Controls.Add(txt_bienvenido);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
@@ -95,5 +108,6 @@
         private Button button1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label txt_bienvenido;
     }
 }

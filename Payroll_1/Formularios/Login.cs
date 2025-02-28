@@ -105,7 +105,7 @@ namespace Payroll_1.Formularios
 
                 if (id_empleado != -1)
                 {
-                    HomeEmpleado frm = new HomeEmpleado(id_empleado);
+                    HomeEmpleado frm = new HomeEmpleado();
                     frm.Show();
                     this.Hide();
                 }

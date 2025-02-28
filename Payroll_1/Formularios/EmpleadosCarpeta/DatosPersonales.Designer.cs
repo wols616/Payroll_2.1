@@ -43,6 +43,7 @@
             lbl_nombres = new Label();
             lbl_dui = new Label();
             groupBox2 = new GroupBox();
+            txt_cuenta = new MaskedTextBox();
             btn_no_cambiar = new Button();
             btn_habilitar_cambio = new Button();
             txt_confirmar_contrasena = new TextBox();
@@ -58,7 +59,6 @@
             lbl_message = new Label();
             lbl_id = new Label();
             pictureBox2 = new PictureBox();
-            txt_cuenta = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -235,6 +235,14 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Información sensible";
             // 
+            // txt_cuenta
+            // 
+            txt_cuenta.Location = new Point(166, 237);
+            txt_cuenta.Mask = "00-00-0000000-0";
+            txt_cuenta.Name = "txt_cuenta";
+            txt_cuenta.Size = new Size(190, 27);
+            txt_cuenta.TabIndex = 13;
+            // 
             // btn_no_cambiar
             // 
             btn_no_cambiar.AccessibleRole = AccessibleRole.None;
@@ -386,14 +394,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 36;
             pictureBox2.TabStop = false;
-            // 
-            // txt_cuenta
-            // 
-            txt_cuenta.Location = new Point(166, 237);
-            txt_cuenta.Mask = "00-00-0000000-0";
-            txt_cuenta.Name = "txt_cuenta";
-            txt_cuenta.Size = new Size(190, 27);
-            txt_cuenta.TabIndex = 13;
             // 
             // DatosPersonales
             // 
