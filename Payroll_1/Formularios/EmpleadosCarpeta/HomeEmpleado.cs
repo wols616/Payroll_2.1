@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Payroll_1.Modelos;
 
 namespace Payroll_1.Formularios
 {
@@ -15,10 +16,13 @@ namespace Payroll_1.Formularios
     {
         int id_Empleado;
 
+        Empleados empleado = new Empleados();
+
         public HomeEmpleado(int id_empleado)
         {
             id_Empleado = id_empleado;
             InitializeComponent();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -34,6 +38,11 @@ namespace Payroll_1.Formularios
             DatosPersonales frm = new DatosPersonales(id_Empleado);
             frm.Show();
             this.Hide();
+        }
+
+        private void txt_bienvenido_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

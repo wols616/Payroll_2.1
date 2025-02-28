@@ -1,4 +1,5 @@
 ﻿using Payroll_1.Formularios.Admin;
+using Payroll_1.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,9 @@ namespace Payroll_1.Formularios
 {
     public partial class HomeAdmin : Form
     {
+        int idAdmin;
+        Empleados empleado = new Empleados();
+
         public HomeAdmin()
         {
             InitializeComponent();
@@ -45,6 +49,11 @@ namespace Payroll_1.Formularios
             Login frm = new Login();
             frm.Show();
             this.Hide();
+        }
+
+        private void HomeAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
