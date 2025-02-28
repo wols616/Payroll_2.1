@@ -71,7 +71,7 @@ namespace Payroll_1.Formularios.Empleado
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            HomeEmpleado frm = new HomeEmpleado();
+            HomeEmpleado frm = new HomeEmpleado(id_Empleado);
             frm.Show();
             this.Hide();
         }

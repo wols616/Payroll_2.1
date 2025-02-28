@@ -18,9 +18,9 @@ namespace Payroll_1.Formularios
 
         Empleados empleado = new Empleados();
 
-        public HomeEmpleado()
+        public HomeEmpleado(int id_empleado)
         {
-
+            id_Empleado = id_empleado;
             InitializeComponent();
 
         }
